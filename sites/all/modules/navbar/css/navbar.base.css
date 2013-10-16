@@ -1,0 +1,224 @@
+/**
+ * @file navbar.base.css
+ *
+ *
+ * Aggressive resets so we can achieve a consistent look in hostile CSS
+ * environments.
+ */
+html.js #navbar-administration,
+html .navbar * {
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+html.js #navbar-administration {
+  font-size: small;
+  line-height: 1;
+}
+html.js .navbar {
+  left: 0; /* LTR */
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/**
+ * Very specific overrides for Drupal system CSS.
+ */
+.navbar li,
+.navbar .menu li,
+.navbar .item-list,
+.navbar .item-list li,
+.navbar .menu li.expanded {
+  list-style-type: none;
+  list-style-image: none;
+}
+.navbar .menu li {
+  margin: 0;
+  padding-top: 0;
+}
+.js .navbar .bar .tab,
+.js .navbar .menu li {
+  display: block;
+}
+.js .navbar .bar .tab,
+.js .navbar .horizontal .tab  {
+  float: left; /* LTR */
+}
+.js .navbar a {
+  display: block;
+  line-height: 1;
+}
+/**
+ * Administration menu.
+ */
+.js .navbar .bar {
+  left: 0; /* LTR */
+  position: absolute;
+  top: 0;
+  z-index: 1250;
+  width: 100%;
+}
+@media only screen {
+  .js .navbar .bar .tab,
+  .js .navbar .tray li {
+    float: none; /* LTR */
+  }
+}
+@media only screen and (min-width: 16.5em) {
+  .js .navbar .bar .tab,
+  .js .navbar .horizontal li {
+    float: left; /* LTR */
+  }
+}
+@media only screen and (min-width: 28.125em) {
+  .js .navbar .bar {
+    position: fixed;
+  }
+}
+
+/**
+ * navbar tray.
+ */
+.js .navbar .tray {
+  display: none;
+}
+.navbar .tray {
+  bottom: auto;
+  position: absolute;
+  z-index: 1200;
+}
+.navbar .horizontal {
+  width: 100%;
+}
+.navbar .vertical,
+.navbar .vertical > .lining:before {
+  bottom: 0;
+  width: 240px;
+  width: 15rem;
+}
+.navbar .vertical {
+  left: -100%; /* LTR */
+  position: absolute;
+}
+.navbar .horizontal {
+  left: 0; /* LTR */
+  height: 0;
+  /* Set one higher than the contextual links gear. */
+  z-index: 1000;
+}
+.navbar .tray .lining {
+  position: relative;
+}
+.navbar .vertical > .lining,
+.navbar .vertical > .lining:before {
+  left: -100%; /* LTR */
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+}
+.navbar .vertical > .lining:before {
+  bottom: 0;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  content: '';
+  display: none;
+  height: 100%;
+  /* Support for devices that do not support position fixed. */
+  position: absolute;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+.navbar .tray.active {
+  display: block;
+}
+.navbar .horizontal.active {
+  height: auto;
+}
+.navbar .vertical.active,
+.navbar .vertical.active > .lining {
+  left: 0; /* LTR */
+  top: 0;
+}
+/* Make vertical navbar tray scroll with page for touch devices. */
+.touch .navbar .vertical.active,
+.touch .navbar .vertical.active > .lining {
+  bottom: auto;
+  top: auto;
+}
+.navbar .horizontal .menu li ul {
+  display: none;
+}
+@media only screen {
+  .navbar .vertical,
+  .navbar .vertical > .lining:before {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 16.5em) {
+  .navbar .vertical,
+  .navbar .vertical > .lining:before {
+    width: 240px;
+    width: 15rem;
+  }
+  .navbar .vertical.active > .lining:before {
+    display: block;
+    left: -1px; /* LTR */
+  }
+}
+@media only screen and (min-width: 28.125em) {
+  .navbar .tray.horizontal,
+  .navbar .tray.vertical {
+    position: fixed;
+  }
+  .navbar .tray.vertical {
+    bottom: 0;
+  }
+}
+/**
+ * At larger screen sizes, the tray pushes the page content.
+ */
+@media only screen and (min-width: 38.125em) {
+  body.navbar-tray-open.navbar-vertical {
+    margin-left: 240px; /* LTR */
+    margin-left: 15rem; /* LTR */
+  }
+}
+/**
+ * navbar tray orientation toggle.
+ *
+ * Hide the orientation toggle from browsers that do not interpret
+ * media queries. They get a standard horizontal navbar.
+ */
+.navbar .horizontal .toggle-orientation {
+  display: none;
+}
+@media only screen {
+  .navbar .tray .toggle-orientation {
+    display: none;
+  }
+}
+@media only screen and (min-width: 16.5em)   {
+  .navbar .tray .toggle-orientation {
+    display: block;
+  }
+}
+.navbar .horizontal .toggle-orientation {
+  bottom: 0;
+  position: absolute;
+  right: 0; /* LTR */
+  top: 0;
+}
+.navbar .vertical .toggle-orientation {
+  float: right; /* LTR */
+  width: 100%;
+}

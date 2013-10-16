@@ -1,0 +1,325 @@
+<?php
+
+/**
+ * @file
+ * Install file for Every Field module.
+ *
+ * This code blatantly copy/pasted from Node Example module in the Examples
+ * project: http://drupal.org/project/examples -- Thanks!
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * - Create one of each fields.
+ * - Create one of each field instances.
+ */
+function every_field_install() {
+  $t = get_t();
+
+  $type = array(
+    'type' => 'every_field',
+    'name' => $t('Every Field'),
+    'base' => 'node_content',
+    'description' => $t('A content type with one of every field.'),
+  );
+
+  $content_type = node_type_set_defaults($type);
+
+  // We add a body field and set the body label immediately.
+  node_add_body_field($content_type, $t('Body field'));
+
+  // Save the content type.
+  node_type_save($content_type);
+
+  // Load the instance definition for our content type's body
+  $body_instance = field_info_instance('node', 'body', 'every_field');
+
+  // Create all the fields we are adding to our content type.
+  foreach (_every_field_installed_fields() as $field) {
+    field_create_field($field);
+  }
+
+  // Create all the instances for our fields.
+  foreach (_every_field_installed_instances() as $instance) {
+    $instance['entity_type'] = 'node';
+    $instance['bundle'] = $type['type'];
+    field_create_instance($instance);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function every_field_uninstall() {
+  // Gather all the example content that might have been created while this
+  // module was enabled.
+  $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
+  $result = db_query($sql, array(':type' => 'every_field'));
+  $nids = array();
+  foreach ($result as $row) {
+    $nids[] = $row->nid;
+  }
+
+  // Delete all the nodes at once.
+  node_delete_multiple($nids);
+
+  // Loop over each of the fields defined by this module and delete
+  // all instances of the field, their data, and the field itself.
+  foreach (array_keys(_every_field_installed_fields()) as $field) {
+    field_delete_field($field);
+  }
+
+  // Loop over any remaining field instances attached to the every_field
+  // content type (such as the body field) and delete them individually.
+  $instances = field_info_instances('node', 'every_field');
+  foreach ($instances as $instance_name => $instance) {
+    field_delete_instance($instance);
+  }
+
+  // Delete our content type
+  node_type_delete('every_field');
+
+  // Purge all field infromation
+  field_purge_batch(1000);
+}
+
+/**
+ * Returns a structured array defining the fields created by this content type.
+ *
+ * This is factored into this function so it can be used in both
+ * node_example_install() and node_example_uninstall().
+ *
+ * @return
+ *  An associative array specifying the fields we wish to add to our
+ *  new node type.
+ */
+function _every_field_installed_fields() {
+  $t = get_t();
+
+  return array(
+    // File and Image.
+    'every_field_file' => array(
+      'field_name' => 'every_field_file',
+      'type'       => 'file',
+      'cardinality' => 1,
+    ),
+    'every_field_image' => array(
+      'field_name' => 'every_field_image',
+      'type'       => 'image',
+      'cardinality' => 1,
+    ),
+ 
+    // List.
+    'every_field_list_boolean' => array(
+      'field_name'  => 'every_field_list_boolean',
+      'cardinality' => 1,
+      'type'        => 'list_boolean',
+      'settings' => array(
+        'allowed_values' => array(0 => $t('No'), 1 => $t('Yes')),
+      ),
+    ),
+    'every_field_list_integer' => array(
+      'field_name'  => 'every_field_list_integer',
+      'cardinality' => 1,
+      'type'        => 'list_integer',
+      'settings' => array(
+        'allowed_values' => array(1 => $t('One'), 2 => $t('Two'), 3 => $t('Three')),
+      ),
+    ),
+    'every_field_list_float' => array(
+      'field_name'  => 'every_field_list_float',
+      'cardinality' => 1,
+      'type'        => 'list_float',
+      'settings' => array(
+        'allowed_values' => array(1.0 => $t('One Point Oh'), 2.0 => $t('Two Point Oh'), 3.0 => $t('Three Point Oh')),
+      ),
+    ),
+    'every_field_list_text' => array(
+      'field_name'  => 'every_field_list_text',
+      'cardinality' => 1,
+      'type'        => 'list_text',
+      'settings' => array(
+        'allowed_values' => array('S' => $t('Small'), 'M' => $t('Medium'), 'L' => $t('Large')),
+      ),
+    ),
+
+    // Number.
+    'every_field_integer' => array(
+      'field_name'  => 'every_field_integer',
+      'cardinality' => 1,
+      'type'        => 'number_integer',
+    ),
+    'every_field_decimal' => array(
+      'field_name'  => 'every_field_decimal',
+      'cardinality' => 1,
+      'type'        => 'number_decimal',
+    ),
+    'every_field_float' => array(
+      'field_name'  => 'every_field_float',
+      'cardinality' => 1,
+      'type'        => 'number_float',
+    ),
+
+    // Taxonomy.
+    'every_field_term_reference' => array(
+      'field_name'  => 'every_field_term_reference',
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
+      'type'        => 'taxonomy_term_reference',
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => 'tags',
+            'parent' => 0,
+          ),
+        ),
+      ),
+    ),
+
+    // Text.
+    'every_field_text' => array(
+      'field_name'  => 'every_field_text',
+      'cardinality' => 1,
+      'type'        => 'text',
+    ),
+    'every_field_text_long' => array(
+      'field_name'  => 'every_field_text_long',
+      'cardinality' => 1,
+      'type'        => 'text_long',
+    ),
+    'every_field_text_with_summary' => array(
+      'field_name'  => 'every_field_text_with_summary',
+      'cardinality' => 1,
+      'type'        => 'text_with_summary',
+    ),
+
+    // Multivalue, required.
+    'every_field_tricky' => array(
+      'field_name'  => 'every_field_tricky',
+      'cardinality' => 9,
+      'type'        => 'text',
+    ),
+
+  );
+}
+
+/**
+ * Returns a structured array defining the instances for this content type.
+ *
+ * This is factored into this function so it can be used in both
+ * node_example_install() and node_example_uninstall().
+ *
+ * @return
+ *  An associative array specifying the instances we wish to add to our new
+ *  node type.
+ */
+function _every_field_installed_instances() {
+  $t = get_t();
+
+  return array(
+    // File and Image.
+    'every_field_file' => array(
+      'field_name'  => 'every_field_file',
+      'label'       => $t('Upload a file'),
+      'widget' => array(
+        'type'    => 'file_file',
+      ),
+    ),
+    'every_field_image' => array(
+      'field_name'  => 'every_field_image',
+      'label'       => $t('Upload an image'),
+      'required'    => FALSE,
+      'widget' => array(
+        'type'    => 'image_image',
+      ),
+    ),
+
+    // List.
+    'every_field_list_boolean' => array(
+      'field_name'  => 'every_field_list_boolean',
+      'label' => $t('Boolean'),
+      'type'        => 'list_boolean',
+      'widget'      => array(
+        'type'    => 'options_onoff',
+      ),
+    ),
+    'every_field_list_integer' => array(
+      'field_name'  => 'every_field_list_integer',
+      'label' => $t('List (integer)'),
+      'type'        => 'list_integer',
+      'widget'      => array(
+        'type'    => 'options_select',
+      ),
+    ),
+    'every_field_list_float' => array(
+      'field_name'  => 'every_field_list_float',
+      'label' => $t('List (float)'),
+      'type'        => 'list_float',
+      'widget'      => array(
+        'type'    => 'options_buttons',
+      ),
+    ),
+    'every_field_list_text' => array(
+      'field_name'  => 'every_field_list_text',
+      'label' => $t('List (text)'),
+      'type'        => 'list_text',
+      'widget'      => array(
+        'type'    => 'options_select',
+      ),
+    ),
+
+    // Number.
+    'every_field_integer' => array(
+      'field_name'  => 'every_field_integer',
+      'label' => $t('Integer'),
+      'type'        => 'number_integer',
+      'widget'      => array(
+        'type'    => 'number',
+      ),
+    ),
+    'every_field_decimal' => array(
+      'field_name'  => 'every_field_decimal',
+      'label' => $t('Decimal'),
+      'type'        => 'number_decimal',
+      'widget'      => array(
+        'type'    => 'number',
+      ),
+    ),
+    'every_field_float' => array(
+      'field_name'  => 'every_field_float',
+      'label' => $t('Float'),
+      'type'        => 'number_float',
+      'widget'      => array(
+        'type'    => 'number',
+      ),
+    ),
+
+    // Taxonomy.
+    'every_field_term_reference' => array(
+      'field_name'  => 'every_field_term_reference',
+      'label' => $t('Tags'),
+      'type'        => 'taxonomy_term_reference',
+      'widget'      => array(
+        'type'    => 'taxonomy_autocomplete',
+      ),
+    ),
+
+    // Text.
+    'every_field_text' => array(
+      'field_name'  => 'every_field_text',
+      'label' => $t('Text'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textfield',
+      ),
+    ),
+    'every_field_text_long' => array(
+      'field_name'  => 'every_field_text_long',
+      'label' => $t('Text, long'),
+      'type'        => 'text',
+      'widget'      => array(
+        'type'    => 'text_textarea',
+      ),
+    ),
+  );
+}
