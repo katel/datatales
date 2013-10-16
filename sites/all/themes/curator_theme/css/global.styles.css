@@ -179,7 +179,7 @@ var {
  */
 #header-wrapper {
   /* Debug styles, is this working */
-  background: rgba(255, 192, 203, 0.5);
+  background: #f5f5f5;
 }
 #header-wrapper .container {}
 
@@ -223,8 +223,7 @@ var {
  * Footer wrapper
  */
 #footer-wrapper {
-  /* Debug styles, is this working? */
-  background: rgba(255, 192, 203, 0.5);
+  background: #f5f5f5;
 }
 #footer-wrapper .container {}
 
