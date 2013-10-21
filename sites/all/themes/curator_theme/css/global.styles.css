@@ -38,13 +38,16 @@ html {
 body {
   font-family: "Trebuchet MS", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 87.5%;
+  color: #44444B;
 }
 
 
 /* =============================================================================
  *   HTML Elements
  * ========================================================================== */
-
+a {
+  color: #4D525D;
+}
 h1 {}
 
 h2 {}
@@ -108,7 +111,132 @@ var {
   font-family: Consolas, Monaco, 'Courier New', Courier, monospace, sans-serif;
 }
 
+/*node editing */
 
+.edit-field .edit-editable {
+box-shadow: 0 0 1px 1px #4d9de9;
+}
+
+/* =============================================================================
+ *   Homepage
+ * ========================================================================== */
+/*
+*/
+
+#block-block-2 .block-title {
+/*background: #5CB28D;
+*/
+background: #4D525D;
+color: white;
+padding-left: 0.5em;
+}
+
+.region-sidebar-first .content {
+  background: #E2DEE4;
+  padding: 0.5em;
+}
+
+a.button {
+  color: white;
+  background: #5CB28D;
+}
+/* =============================================================================
+ *   Individual record view
+ * ========================================================================== */
+/*
+*/
+.node-artefact {
+   font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 130%;
+
+}
+
+.workbench-info-block {
+background: url("../images/squairy.png") !important;
+
+}
+.node-artefact #leaflet-map {
+  max-width: 100%;
+  width :60%;
+}
+.flag-bookmarks {
+
+}
+.node-artefact .field {
+  margin: 2em 0;
+}
+
+
+.node-artefact section.field h2 {
+    background-position: left;
+  background-repeat: no-repeat;
+padding-left: 1.6em !important;
+}
+
+.field-name-field-creation-date h2 {
+   background-image: url("../images/calendar-icon.png");
+
+
+}
+
+.field-name-field-creator h2 {
+     background-image: url("../images/user-icon.png");
+
+}
+
+
+.field-name-field-keywords h2 {
+     background-image: url("../images/tag-icon.png");
+
+}
+
+.field-name-field-medium h2 {
+     background-image: url("../images/medium-icon.png");
+
+}
+
+.field-name-field-source-url h2 {
+     background-image: url("../images/source-icon.png");
+
+}
+
+.field-name-field-genre h2 {
+     background-image: url("../images/genre-icon.png");
+
+}
+
+.field-name-field-collection h2 {
+     background-image: url("../images/collection-icon.png");
+
+}
+
+.field-name-field-location h2 {
+     background-image: url("../images/location-icon.png");
+
+}
+
+span.flag-bookmarks {
+       background-image: url("../images/pushpin-2.png");
+      background-position: left;
+  background-repeat: no-repeat;
+padding: 0.5em 0.5em 0.5em 1.4em;
+background-color: #5CB28D;
+
+
+}
+
+.flag-bookmarks a {
+  color: white;
+  font-size: 1em;
+
+}
+
+.node-readmore a {
+  color: #5CB28D;
+  font-style: italic;
+}
 /* =============================================================================
  *   Wrappers
  * ========================================================================== */
@@ -179,7 +307,10 @@ var {
  */
 #header-wrapper {
   /* Debug styles, is this working */
-  background: #f5f5f5;
+    background: #4D525D;
+
+ /* background: url("../images/grey_wash_wall.png");*/
+  padding-bottom: 2em;
 }
 #header-wrapper .container {}
 
@@ -210,7 +341,9 @@ var {
 /*
  * Wraps the main content column
  */
-#content-wrapper {}
+#content-wrapper {
+  padding-top:2em;
+}
 #content-wrapper .container {}
 
 /*
@@ -251,13 +384,16 @@ var {
 /*
  * Wrapper for the site name and slogan (hgroup)
  */
-#name-and-slogan {}
+#name-and-slogan {
+  color:#f5f5f5;
+}
 
 /*
  * Site name (h1)
  */
 #site-name {
   margin: 0;
+  font-size: 3em;
 }
 
 #site-name a {}
@@ -265,6 +401,7 @@ var {
 #site-name a:link,
 #site-name a:visited {
   text-decoration: none;
+  color: #fff;
 }
 
 #site-name a:hover,
@@ -1104,6 +1241,7 @@ ul.action-links li {}
  */
 .block-title {
   margin: 0;
+  color:#5CB28D;
 }
 
 /*
@@ -1497,6 +1635,7 @@ a.button {
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
+  padding: 0.5em;
 }
 
 /*
