@@ -218,10 +218,10 @@ padding-left: 1.6em !important;
 }
 
 span.flag-bookmarks {
-       background-image: url("../images/pushpin-2.png");
+     /*  background-image: url("../images/pushpin-2.png");
       background-position: left;
   background-repeat: no-repeat;
-padding: 0.5em 0.5em 0.5em 1.4em;
+padding: 0.5em 0.5em 0.5em 1.4em;*/
 background-color: #5CB28D;
 
 
