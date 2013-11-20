@@ -16,7 +16,6 @@
   stylesheets[screen][] = css/global.base.css
   stylesheets[screen][] = css/global.styles.css
   stylesheets[screen][] = css/font-awesome.min.css
-
   ; Print - uncomment to load basic print styles.
   ; stylesheets[print][] = css/print.css
 
@@ -58,6 +57,9 @@
 
 
 ;----------// Scripts
+;scripts[] = scripts/jquery.gridly.js
+;scripts[] = scripts/jquery.draggable.js
+scripts[] = scripts/custom.js
 
   ; Internet Explorer Scripts
   ;
@@ -72,6 +74,7 @@
   ; following as a guide:
 
   ; ie_scripts[lte IE 8][] = js/my-script.js
+
 
 
 ;----------// Regions
@@ -105,12 +108,12 @@
   ; and main content column layout - these are controlled via theme settings for
   ; Page layouts. The Panels layouts are for Panels module and are controlled via
   ; the theme settings for Panels layouts.
-  
+
   ; There are seperate directories for each type of layout and an example
   ; plugin for each. These don't do very much, they are just examples, you can
   ; use the core themes layout plugins as a guide. Please see the _README in the
   ; layouts directory of this subtheme.
-  
+
   ; Remove the semicolon to umcomment and clear the sites cache.
 
   ; Page layout plugins

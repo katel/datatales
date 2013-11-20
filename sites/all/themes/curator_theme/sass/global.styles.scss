@@ -30,7 +30,7 @@
  *   Base
  * ========================================================================== */
 
-/* 
+/*
  * To preserve theme settings never apply font properties to the HTML element.
  * This is critically important if you are using the Responsive JavaScript
  * feature as this relies on being able to set a pseudo font family on the HTML
@@ -46,6 +46,10 @@ body {
   font-family: $sans-serif-small; // Set from _custom.scss font variables
   font-size: 87.5%;
 }
+
+
+
+
 
 
 /* =============================================================================
@@ -563,9 +567,9 @@ a {
     display: block;
     white-space: nowrap;
     padding: 0 10px;
-    
+
     &:visited {}
-    
+
     &:hover,
     &:focus {}
   }
@@ -724,10 +728,10 @@ ul.menu {
 
 /* If li.content exists it's a problem, so reset the padding */
 .block .menu li.content {
-  padding: 0;   
+  padding: 0;
 }
 
- 
+
 /* =============================================================================
  *   Book navigation menu
  * ========================================================================== */
@@ -745,7 +749,7 @@ ul.menu {
     min-width: 2em;
     white-space: nowrap;
   }
-  
+
   .menu {
     margin-left: 0;
   }
@@ -1152,7 +1156,7 @@ ul.action-links {
 
 
 /*
- * Image Alignment Theme Settings - included here so you can easily override 
+ * Image Alignment Theme Settings - included here so you can easily override
  */
 
 /*
@@ -1605,7 +1609,7 @@ ul.action-links {
 /*
  * Wrapper for a form element (or group of form elements) and its label
  */
-.form-item { 
+.form-item {
 
   input.error,
   textarea.error,
@@ -1617,7 +1621,7 @@ ul.action-links {
     font-weight: 700;
   }
 
-  label.option { 
+  label.option {
   }
 
   .description {
@@ -1642,7 +1646,7 @@ ul.action-links {
 /*
  * The submit button
  */
-.form-submit { 
+.form-submit {
 }
 
 
@@ -1663,14 +1667,14 @@ fieldset {
 /*
  * Tips for Drupal's input formats
  */
-.tips { 
+.tips {
 }
 
 
 /*
  * Buttons used by contrib modules like Media
  */
-a.button { 
+a.button {
   @include appearance(button);
 }
 

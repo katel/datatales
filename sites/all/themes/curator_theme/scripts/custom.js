@@ -23,4 +23,13 @@ jQuery(function(){ //DOM Ready
 });
 
 
+(function ($) {
+  Drupal.behaviors.gridModule = {
+    attach: function (context, settings) {
+$( ".sortable" ).sortable();
+$( ".sortable" ).disableSelection();
 
+
+    }
+  };
+})(jQuery);
