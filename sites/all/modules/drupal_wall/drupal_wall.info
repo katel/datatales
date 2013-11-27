@@ -1,0 +1,15 @@
+name = Drupal Wall
+description = A custom wall post for drupal user's status posting.
+core = 7.x
+
+package = social
+stylesheets[all][] = css/drupal_wall.css
+configure = admin/config/user-interface/drupal_wall
+dependencies[] = flag
+
+; Information added by drupal.org packaging script on 2013-07-03
+version = "7.x-1.0"
+core = "7.x"
+project = "drupal_wall"
+datestamp = "1372850756"
+
