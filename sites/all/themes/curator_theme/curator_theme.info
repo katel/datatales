@@ -59,7 +59,7 @@
 ;----------// Scripts
 ;scripts[] = scripts/jquery.gridly.js
 ;scripts[] = scripts/jquery.draggable.js
-scripts[] = scripts/custom.js
+;scripts[] = scripts/custom.js
 
   ; Internet Explorer Scripts
   ;

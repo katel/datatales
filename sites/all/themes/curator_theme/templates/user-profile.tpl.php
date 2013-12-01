@@ -39,7 +39,7 @@
 <?php
 
 //load the view
-$views = views_embed_view('shared_narratives', 'page');
+$views = views_embed_view('user-shared-narrative', 'page');
 //output the view
 print render($views);
 ?>
