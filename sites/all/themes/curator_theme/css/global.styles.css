@@ -49,7 +49,7 @@
  * ========================================================================== */
 .sortable ul.ui-sortable li {
     width: 300px;
-    height:300px;
+    height:auto;
 }
 
 #draggableviews-table-flag_collectionlist-page tr {
@@ -60,15 +60,23 @@
 }
 
 .view-user-shared-narrative img {
-    width: 100%;
-    height: auto;
+width: 80%;
+height: auto;
     border: 5px solid #fff;
 }
 
 .narrativetext .field-item, .views-field-field-reason .field-item {
 font-size: 1.5em;
+
 }
 
+
+/* my own sortable view */
+.view-id-flag_collectionlist img{
+    width: 100%;
+    height: auto;
+
+}
 
 /*#views-form-flag-collectionlist-page table {
     width: auto;
@@ -85,10 +93,34 @@ font-size: 1.5em;
 
 
 
+
+
 #views-form-flag-collectionlist-page tr {float:left;}*/
 /* .sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
 .sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 1em; text-align: center; }
 */
+
+/* =============================================================================
+ *   Masonry view
+ * ========================================================================== */
+
+.masonry-brick {
+    width: 33%;
+}
+
+.masonry-brick .narrativetext {
+
+}
+/* =============================================================================
+ *   Slideshow styles
+ * ========================================================================== */
+
+.views-slideshow-controls-bottom .views-slideshow-pager-field-item {
+    float: left; margin: 5px 19px 0 0;
+
+}
+
+
 /* =============================================================================
  *   Base
  * ========================================================================== */
@@ -204,6 +236,14 @@ pre,code,tt,samp,kbd,var {
     box-shadow: 0 0 1px 1px #4d9de9;
 }
 
+
+div.status, table tr.ok {
+background-color: #B0C9D0;
+border: 1px solid #9EBEC7;
+color: white;
+
+}
+
 /* =============================================================================
  *   Homepage
  * ========================================================================== */
@@ -231,7 +271,15 @@ border-radius: 8px 8px 0 0 !important;
     padding-left: .5em;
     background: #B0C9D0;
 
+
 }
+#block-block-2 {
+     margin-bottom: 20px;
+margin-top: 20px;
+margin-right: 10px;
+}
+
+
 
 #block-block-2 .block-content {
        margin-left: 10px;
@@ -472,6 +520,10 @@ background-color: #303030;
  * Wraps the nav elements
  */
 #nav-wrapper {
+
+padding: 3px 0;
+background: #B0C9D0;
+
 }
 
 #nav-wrapper .container {
@@ -928,6 +980,7 @@ ul.menu li a {
 }
 
 ul.menu li a:link,ul.menu li a:visited {
+    color: white;
 }
 
 ul.menu li a:active,ul.menu li a.active {
@@ -940,6 +993,10 @@ ul.menu li.active a,ul.menu li.active-trail a {
 }
 
 ul.menu li.first,ul.menu li.last {
+}
+
+ul.menu li.last {
+    float:right;
 }
 
 /* If li.content exists it's a problem, so reset the padding */

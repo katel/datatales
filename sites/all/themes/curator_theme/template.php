@@ -1,5 +1,14 @@
 <?php
 
+
+// function curator_theme_vscc_element_white_icons($vars) {
+//     $image_vars = array(
+//         'path' => drupal_get_path('theme', 'liwint') . '/images/vscc/' . $vars['element'] . '.png',
+//         'alt' => t($vars['element']),
+//         'title' => t($vars['element']),
+//     );
+//     return theme('image', $image_vars);
+// }
 /**
  * @file
  * Process theme data.
@@ -12,7 +21,7 @@
  * used as an alternative to directly editing or adding code to templates. Its
  * worth spending some time to learn more about these functions - they are a
  * powerful way to easily modify the output of any template variable.
- * 
+ *
  * Preprocess and Process Functions SEE: http://drupal.org/node/254940#variables-processor
  * 1. Rename each function and instance of "adaptivetheme_subtheme" to match
  *    your subthemes name, e.g. if your theme name is "footheme" then the function
@@ -30,7 +39,7 @@ function adaptivetheme_subtheme_preprocess_html(&$vars) {
   global $theme_key;
 
   // Two examples of adding custom classes to the body.
-  
+
   // Add a body class for the active theme name.
   // $vars['classes_array'][] = drupal_html_class($theme_key);
 
