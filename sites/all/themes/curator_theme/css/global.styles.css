@@ -84,7 +84,10 @@ font-size: 1.5em;
 
 
 
-#views-form-flag-collectionlist-page tr {float:left;}*/
+
+
+
+#views-form-flag-collectionlist-page tr {float:left;}
 
 
 /* =============================================================================
@@ -112,7 +115,9 @@ img.image-style-slideshow-main {
 }
 
 .views-slideshow-controls-bottom {
-
+/*    background: #303030;
+    filter:alpha(opacity=60);
+opacity:0.60;*/
 }
 
 .views_slideshow_cycle_main {
@@ -361,9 +366,8 @@ h1.node-title {
     padding-top: 1em;
 }
 #block-block-6 img {
-float: left;
-margin-right: 3em;
-margin-bottom: 2em;
+    float: left;
+    margin-right: 3em;
 }
 /* =============================================================================
  *   Individual record view
