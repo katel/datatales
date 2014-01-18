@@ -1,7 +1,7 @@
 <?php
 
 
-// function curator_theme_vscc_element_white_icons($vars) {
+// function curator_theme_vscc_element_black_icons($vars) {
 //     $image_vars = array(
 //         'path' => drupal_get_path('theme', 'liwint') . '/images/vscc/' . $vars['element'] . '.png',
 //         'alt' => t($vars['element']),
