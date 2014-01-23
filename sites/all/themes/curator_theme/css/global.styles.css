@@ -365,9 +365,10 @@ h1.node-title {
 #block-block-6 {
     padding-top: 1em;
 }
-#block-block-6 img {
+img.logo {
     float: left;
     margin-right: 3em;
+    margin-bottom: 2em;
 }
 /* =============================================================================
  *   Individual record view

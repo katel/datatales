@@ -6,7 +6,7 @@ cache/
 files/
 sites/*/files
 sites/*/private
-
+sites/all/themes/curator_theme/images/logos
 # Ignore default text files
 .htaccess
 robots.txt

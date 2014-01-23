@@ -10,6 +10,8 @@ jQuery(document).ready(function($) {
   });
 });
 
+
+
 // Auto upload image & hide upload button.
 (function ($) {
   Drupal.behaviors.autoUpload = {
